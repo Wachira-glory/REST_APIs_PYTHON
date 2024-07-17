@@ -9,5 +9,5 @@ class ClassPeriod(models.Model):
     classroom = models.CharField(max_length=50)
     day_of_the_week = models.CharField(max_length=20)
 
-    def __str__(self):
-        return f"{self.course.course_title} - {self.day_of_the_week} ({self.start_time} - {self.end_time})"
+    # def __str__(self):
+    #     return f"{self.course.course_title} - {self.day_of_the_week} ({self.start_time} - {self.end_time})"
