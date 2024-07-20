@@ -12,7 +12,7 @@ class Teacher(models.Model):
     hire_date = models.DateTimeField()
     gender = models.CharField(max_length=10)
     bio = models.TextField
-    pic = models.ImageField(max_length=20)
+    # pic = models.ImageField(max_length=20)
 
 
     def __str__(self):

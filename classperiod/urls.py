@@ -1,13 +1,8 @@
-# from django.urls import path
-# from .views import ClassPeriodView
-
-# urlpatterns = [
-#     path('', ClassPeriodView.as_view(), name='class_period_list'),
-# ]
-
 from django.urls import path
-from .views import ClassPeriodView
+# from .views import ClassPeriodView
+from .views import ClassPeriodListView
+from .views import ClassPeriodDetailView
 
 urlpatterns = [
-    path('class-periods/', ClassPeriodView.as_view(), name='class-periods'),
-]
+    path("", ClassPeriodListView.as_view(), name="classperiod_list_view"),
+    path("<int:id>/", ClassPeriodDetailView.as_view(), name="classperiod_detail_view"),  ]

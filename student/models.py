@@ -14,9 +14,10 @@ class Student(models.Model):
     date_of_birth = models.DateField()
     next_of_kin = models.CharField(max_length=20)
     bio = models.TextField()
-    pic = models.ImageField()
+    # pic = models.ImageField()
 
-    course_title=models.ManyToManyField('course.Course')
+    # course_title=models.ManyToManyField('course.Course')
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+    
