@@ -16,6 +16,12 @@ from .serializers import TeacherSerializer
 class StudentListView(APIView):
     def get(self, request):
         students = Student.objects.all()
+        first_name=request.query_params.get("first_name")
+        country=request.query_params.get("country")
+        if first_name:
+            students=students.filter(first_name=first_name)
+        if country:
+            students=students.filter(country=country)
         serializer = StudentSerializer(students, many=True)
         return Response(serializer.data)
     def post(self,request):
@@ -27,6 +33,17 @@ class StudentListView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class StudentDetailView(APIView):
+    def enroll(self,student,course_id):
+        course = Course.objects.get(id=course_id)
+        student.courses.add(course)
+    def post(self,request,id):
+        student=Student.objects.get(id=id)
+        action = request.data.get("action")
+        if action=="enroll":
+            course_id=request.data.get("course_id")
+            self.enroll(student,course_id)
+            return Response(status=status.HTTP_201_CREATED)
+
     def get(self,request,id):
         #retrieving a single object
         student=Student.objects.get(id=id)
@@ -77,6 +94,17 @@ class ClassPeriodListView(APIView):
 #             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class ClassPeriodDetailView(APIView):
+    def enroll(self,classperiod,teacher_id):
+        teacher = Teacher.objects.get(id=teacher_id)
+        classperiod.Teachers.add(teacher)
+    def post(self,request,id):
+        classperiod=Classperiod.objects.get(id=id)
+        action = request.data.get(" action")
+        if action=="enroll":
+            teacher_id=request.data.get("teacher_id")
+            self.enroll(classperiod,teacher_id)
+            return Response(status=status.HTTP_201_CREATED)
+    
     def get(self,request,id):
         #retrieving a single object
         classperiod=ClassPeriod.objects.get(id=id)
@@ -117,6 +145,16 @@ class ClassroomListView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 class ClassroomDetailView(APIView):
+    def enroll(self,classroom,teacher_id):
+        teacher = Teacher.objects.get(id=teacher_id)
+        classroom.Teachers.add(teacher)
+    def post(self,request,id):
+        classroom=Classroom.objects.get(id=id)
+        action = request.data.get(" action")
+        if action=="enroll":
+            teacher_id=request.data.get("teacher_id")
+            self.enroll(classroom,teacher_id)
+            return Response(status=status.HTTP_201_CREATED)
     def get(self,request,id):
         #retrieving a single object
         classroom=Classroom.objects.get(id=id)
@@ -148,6 +186,17 @@ class CourseListView(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 class CourseDetailView(APIView):
+
+    def enroll(self,course,teacher_id):
+        teacher = Teacher.objects.get(id=teacher_id)
+        course.Teachers.add(teacher)
+    def post(self,request,id):
+        course=Course.objects.get(id=id)
+        action = request.data.get("action")
+        if action=="enroll":
+            teacher_id=request.data.get("teacher_id")
+            self.enroll(course,teacher_id)
+            return Response(status=status.HTTP_201_CREATED)
     def get(self,request,id):
         #retrieving a single object
         course=Course.objects.get(id=id)

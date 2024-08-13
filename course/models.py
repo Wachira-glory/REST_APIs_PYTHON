@@ -25,6 +25,7 @@ from student.models import Student
 from teacher.models import Teacher
 
 class Course(models.Model):
+    course_id=models.IntegerField(default=1) 
     course_title = models.CharField(max_length=20)
     course_description = models.CharField(max_length=20)
     start_date = models.DateField()
@@ -33,11 +34,8 @@ class Course(models.Model):
     teacher_code = models.PositiveSmallIntegerField()
     course_materials = models.TextField()
     course_attendees = models.PositiveSmallIntegerField()
-    course_fee = models.CharField(max_length=20)
-
-  
-    first_name = models.ForeignKey(Student,on_delete=models.CASCADE, default=2)
-    first_name=models.ForeignKey(Teacher,on_delete=models.CASCADE)
-
+    course_fee = models.CharField(max_length=20)  
+    # first_name = models.ForeignKey(Student,on_delete=models.CASCADE, default=2)
+    first_name = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='courses') 
     def __str__(self):
         return f"{self.course_title} {self.course_description}"

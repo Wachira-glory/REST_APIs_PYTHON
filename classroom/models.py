@@ -14,8 +14,7 @@ class Classroom(models.Model):
     tv_numbers = models.PositiveSmallIntegerField()
     class_code = models.PositiveSmallIntegerField()
 
-    first_name = models.ForeignKey(Student, on_delete=models.CASCADE)
-    first_name = models.ForeignKey(Student,on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.class_name} {self.class_capacity}"

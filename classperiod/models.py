@@ -3,6 +3,7 @@ from course.models import Course
 
 # Create your models here.
 class ClassPeriod(models.Model):
+    first_name = models.CharField(max_length=100) 
     start_time = models.TimeField()
     end_time = models.TimeField()
     course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='class_periods')
