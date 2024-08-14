@@ -3,6 +3,7 @@ from course.models import Course
 
 # Create your models here.
 class ClassPeriod(models.Model):
+    teacher = models.CharField(max_length=100) 
     first_name = models.CharField(max_length=100) 
     start_time = models.TimeField()
     end_time = models.TimeField()
