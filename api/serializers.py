@@ -48,7 +48,7 @@ class MinimalTeacherSerializer(serializers.ModelSerializer):
 
 
 class CourseSerializer(serializers.ModelSerializer):
-    # teacher = TeacherSerializer()  # Change 'first_name' to 'teacher'
+    teacher = TeacherSerializer()  # Change 'first_name' to 'teacher'
     class Meta:
         model = Course
         fields = '__all__'
@@ -59,19 +59,20 @@ class MinimalCourseSerializer(serializers.ModelSerializer):
         fields = ['id', 'course_title','course_materials']
 
 class ClassroomSerializer(serializers.ModelSerializer):
-    course = CourseSerializer()
+    # course = CourseSerializer()
+    teacher = TeacherSerializer()
     class Meta:
         model = Classroom
         fields = '__all__' 
-        fields = '__all__'
+       
 class MinimalClassroomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Classroom
-        fields = ['id', 'class_name','class_capacity']
+        fields = ['id', 'class_name','class_capacity','teacher']
 
 
 class ClassPeriodSerializer(serializers.ModelSerializer):
-    course = CourseSerializer()
+    teacher = TeacherSerializer()
     class Meta:
         model = ClassPeriod
         fields = '__all__'
@@ -79,4 +80,4 @@ class ClassPeriodSerializer(serializers.ModelSerializer):
 class MinimalClassPeriodSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClassPeriod
-        fields = ['id', 'course','day_of_the_week']
+        fields = ['id', 'classroom','day_of_the_week']

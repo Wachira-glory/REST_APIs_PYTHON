@@ -1,10 +1,11 @@
 from django.db import models
+from teacher.models import Teacher
 
 
 
 class Student(models.Model):
     course = models.TextField()
-    classroom = models.TextField() 
+    # classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, related_name='students', null=True, blank=True)  
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     code = models.PositiveSmallIntegerField()
@@ -17,9 +18,9 @@ class Student(models.Model):
     bio = models.TextField()
 
     # ForeignKey to Teacher, allowing null values
-    # teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='courses') 
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='cassigned_teachers') 
 
-    teacher = models.ForeignKey('teacher.Teacher', on_delete=models.CASCADE, related_name='students_assigned', null=True, blank=True)
+     
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

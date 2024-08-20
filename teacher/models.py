@@ -1,5 +1,5 @@
 from django.db import models
-from student.models import Student  # Ensure this import is correct
+# from course.models import Course  # Ensure this import is correct
 
 class Teacher(models.Model):
     classroom = models.CharField(max_length=20)
@@ -15,7 +15,6 @@ class Teacher(models.Model):
     bio = models.TextField()
 
     # ManyToManyField to Student
-    students = models.ManyToManyField(Student, related_name='teachers', blank=True)
-
-    def __str__(self): 
+    courses = models.ManyToManyField('course.Course', related_name='assigned_course_teachers')  # Use string reference
+    def __str__(self):
         return f"{self.first_name} {self.last_name}"
