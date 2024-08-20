@@ -1,15 +1,15 @@
 from django.db import models
 from course.models import Course
+from classroom.models import Classroom
 
-# Create your models here.
 class ClassPeriod(models.Model):
-    teacher = models.CharField(max_length=100) 
-    first_name = models.CharField(max_length=100) 
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='class_periods')
     start_time = models.TimeField()
     end_time = models.TimeField()
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='class_periods')
-    classroom = models.CharField(max_length=50)
+    classroom =  models.ForeignKey(Classroom, on_delete=models.SET_NULL, null=True, related_name='classroom')
     day_of_the_week = models.CharField(max_length=20)
+    # course = models.ForeignKey(Classroom, on_delete=models.SET_NULL, null=True, related_name='course')
+    
 
-    # def __str__(self):
-    #     return f"{self.course.course_title} - {self.day_of_the_week} ({self.start_time} - {self.end_time})"
+    def __str__(self):
+        return f"{self.course}"

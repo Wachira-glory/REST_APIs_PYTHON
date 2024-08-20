@@ -1,11 +1,10 @@
 from django.db import models
 
-# from course.models import Course
 
-# Create your models here.
+
 class Student(models.Model):
-    course=models.TextField()
-    classroom=models.TextField() 
+    course = models.TextField()
+    classroom = models.TextField() 
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     code = models.PositiveSmallIntegerField()
@@ -16,10 +15,11 @@ class Student(models.Model):
     date_of_birth = models.DateField()
     next_of_kin = models.CharField(max_length=20)
     bio = models.TextField()
-    # pic = models.ImageField()
 
-    # course_title=models.ManyToManyField('course.Course')
+    # ForeignKey to Teacher, allowing null values
+    # teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, related_name='courses') 
+
+    teacher = models.ForeignKey('teacher.Teacher', on_delete=models.CASCADE, related_name='students_assigned', null=True, blank=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
-    

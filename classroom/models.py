@@ -1,6 +1,7 @@
 from django.db import models
 from teacher.models import Teacher
 from student.models import Student
+from course.models import Course
 
 class Classroom(models.Model):
     class_name = models.CharField(max_length=20)
@@ -15,6 +16,7 @@ class Classroom(models.Model):
     class_code = models.PositiveSmallIntegerField()
 
     first_name = models.CharField(max_length=100)
-
+    # email=models.ForeignKey(Student, on_delete = models.CASCADE, related_name='classroom')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name='classrooms')
     def __str__(self):
         return f"{self.class_name} {self.class_capacity}"
