@@ -297,3 +297,9 @@ class TeacherDetailView(APIView):
         teacher=Teacher.objects.get(id=id)
         teacher.delete()
         return Response(status=status.HTTP_202_ACCEPTED)
+    
+class WeeklyTimetable(APIView):
+    def get(self, request):
+        class_sessions = ClassPeriod.objects.all()
+        serializer = ClassPeriodSerializer(class_sessions, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
