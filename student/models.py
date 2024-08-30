@@ -4,6 +4,7 @@ from teacher.models import Teacher
 
 
 class Student(models.Model):
+    # The course should have a relationship
     course = models.TextField()
     # classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, related_name='students', null=True, blank=True)  
     first_name = models.CharField(max_length=20)
