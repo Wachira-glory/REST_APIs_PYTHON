@@ -22,29 +22,29 @@ The School Management System is a comprehensive web application developed with D
 **Clone the Repository:**
 
 
-**Copy code**
+
 git clone https://github.com/Wachira-glory/REST_APIs_PYTHON.git
 cd school-management-system
 Set Up a Virtual Environment:
 
 
-**Copy code**
+
 python3 -m venv venv
 source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
 Install Dependencies:
 
 
-**Copy code**
+
 pip install -r requirements.txt
 Apply Migrations:
 
 
-**Copy code**
+
 python manage.py migrate
 Create a Superuser:
 
 
-**Copy code**
+
 python manage.py createsuperuser
 Run the Development Server:
 
