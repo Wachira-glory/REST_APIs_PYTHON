@@ -1,15 +1,17 @@
-School Management System
-Project Description
+**School Management System**
+
+**Project Description**
+
 The School Management System is a comprehensive web application developed with Django. It is designed to streamline various school administrative tasks and enhance efficiency in managing school activities. Key features include:
 
-Course Management: Administrators can create, update, and manage the courses offered by the school.
-Class Scheduling: Organize and schedule class periods to accommodate flexible timetables.
-Student Enrollment: Easily enroll students into their respective classes and monitor their academic progress.
-Teacher Assignments: Assign qualified teachers to specific courses and class periods.
-Classroom Allocation: Allocate classrooms effectively to optimize the use of school resources.
-The system includes secure logins for administrators, teachers, and students, ensuring a user-friendly experience for all parties involved.
+  *Course Management: Administrators can create, update, and manage the courses offered by the school.
+  *Class Scheduling: Organize and schedule class periods to accommodate flexible timetables.
+  *Student Enrollment: Easily enroll students into their respective classes and monitor their academic progress.
+  *Teacher Assignments: Assign qualified teachers to specific courses and class periods.
+  *Classroom Allocation: Allocate classrooms effectively to optimize the use of school resources.
+  *The system includes secure logins for administrators, teachers, and students, ensuring a user-friendly experience for all parties involved.
 
-To get the School Management System up and running on your local machine, follow these steps:
+To get the School Management System up and running on your local machine, follow these steps:s
 
 Clone the Repository:
 
