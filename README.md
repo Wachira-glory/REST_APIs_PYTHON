@@ -4,7 +4,7 @@
 
 The School Management System is a comprehensive web application developed with Django. It is designed to streamline various school administrative tasks and enhance efficiency in managing school activities. Key features include:
 
-  *Course Management: Administrators can create, update, and manage the courses offered by the school.
+  +Course Management: Administrators can create, update, and manage the courses offered by the school.
   
   *Class Scheduling: Organize and schedule class periods to accommodate flexible timetables.
   
